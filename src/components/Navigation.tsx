@@ -28,7 +28,7 @@ export default function Navigation() {
     };
 
     return (
-        <nav className="fixed top-6 left-0 right-0 z-50 px-8 flex justify-between items-center pointer-events-none font-mono">
+        <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center pointer-events-none font-mono bg-black/40 backdrop-blur-md">
             {/* Logo placeholder - Left side */}
             <motion.div
                 initial={{ opacity: 0 }}
@@ -45,7 +45,7 @@ export default function Navigation() {
                 variants={containerVariant}
                 initial="hidden"
                 animate="show"
-                className="flex items-center gap-2 px-2 py-2 pointer-events-auto mx-auto"
+                className="flex items-center gap-2 pointer-events-auto mx-auto"
             >
                 {links.map((link) => (
                     <motion.li key={link.name} variants={itemVariant}>
@@ -53,7 +53,6 @@ export default function Navigation() {
                             href={link.href}
                             className="text-sm font-medium text-green-600 hover:text-green-400 hover:bg-green-900/30 transition-colors px-4 py-2 uppercase tracking-wider relative group"
                         >
-                            {/* Decorative brackets on hover */}
                             <span className="absolute left-1 opacity-0 group-hover:opacity-100 transition-opacity">{'['}</span>
                             {link.name}
                             <span className="absolute right-1 opacity-0 group-hover:opacity-100 transition-opacity">{']'}</span>
