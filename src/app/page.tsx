@@ -15,6 +15,10 @@ export default function Home() {
       <Skills />
       <Projects />
       <Experience />
+
+      {/* Section Separator */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent" />
+
       <Contact />
     </main>
   );
