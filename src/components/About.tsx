@@ -41,10 +41,13 @@ export default function About() {
 
                         <div className="space-y-6 text-green-100/80 text-lg leading-relaxed">
                             <p>
-                                <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="I am a " duration={1500} /><span className="text-green-400 font-bold shadow-[0_4px_0_-2px_rgba(34,197,94,0.5)]"><ScrambleTextOnScroll text="Full-stack developer" duration={2000} /></span><ScrambleTextOnScroll text=". My passion for development and data started when my drive for creating something that helps someone or something sparked. I am constantly fascinated by the intersection of complex logic and practical, human-centered utility." duration={3000} />
+                                <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="I am a 22-year-old " duration={1500} /><span className="text-green-400 font-bold shadow-[0_4px_0_-2px_rgba(34,197,94,0.5)]"><ScrambleTextOnScroll text="Full-Stack Developer" duration={2000} /></span><ScrambleTextOnScroll text=" and a 4th-year Computer Science student based in the Philippines. I love building tools that truly help people and make everyday tasks easier. For me, the best part of coding is finding the perfect balance between smart, reliable system logic and a clean, seamless user experience." duration={3000} />
                             </p>
                             <p>
-                                <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="I am currently focusing on my internship, gaining experience from it, and I am very much busy with gaining certifications at DataCamp (taking Data Science as I have been granted a scholarship from DEP - Data Engineering Pilipinas) and Coursera (Digital Marketing and e-Commerce). When I'm not studying or coding, I spend my free time exploring new worlds through gaming." duration={4000} /> <span className="inline-block w-2 h-4 bg-green-500 animate-pulse align-middle ml-1"></span>
+                                <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="Currently, I am focused on finishing my degree and growing my real-world tech skills through my internship at DTI Negros Occidental. Because I always want to keep learning, I am also earning certifications in Data Science on DataCamp (supported by a Data Engineering Pilipinas scholarship) and Digital Marketing on Coursera." duration={4000} />
+                            </p>
+                            <p>
+                                <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="When I am not writing code, analyzing data, or working on my school projects, I like to unplug and relax by exploring new digital worlds through gaming." duration={5000} /> <span className="inline-block w-2 h-4 bg-green-500 animate-pulse align-middle ml-1"></span>
                             </p>
                         </div>
                     </div>
