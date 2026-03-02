@@ -5,10 +5,28 @@ import { useState, useEffect } from "react";
 // Toned down to mostly alphanumeric with a few subtle symbols
 const CHARS = "ABCDEFGHIJKLMOPQRSTUVWXYZ0123456789-_/\\";
 
-export function useScrambleText(text: string, duration: number = 2000) {
-    const [displayText, setDisplayText] = useState(text);
+export function useScrambleText(text: string, duration: number = 2000, trigger: boolean = true) {
+    const [displayText, setDisplayText] = useState(() => {
+        if (!trigger) {
+            let placeholder = "";
+            for (let i = 0; i < text.length; i++) {
+                placeholder += (text[i] === " " || text[i] === "\n") ? text[i] : "_";
+            }
+            return placeholder;
+        }
+        return text;
+    });
 
     useEffect(() => {
+        if (!trigger) {
+            let placeholder = "";
+            for (let i = 0; i < text.length; i++) {
+                placeholder += (text[i] === " " || text[i] === "\n") ? text[i] : "_";
+            }
+            setDisplayText(placeholder);
+            return;
+        }
+
         let startTime = performance.now();
         let frameId: number;
         let lastUpdateTime = 0;
@@ -54,7 +72,7 @@ export function useScrambleText(text: string, duration: number = 2000) {
         frameId = requestAnimationFrame(animate);
 
         return () => cancelAnimationFrame(frameId);
-    }, [text, duration]);
+    }, [text, duration, trigger]);
 
     return displayText;
 }

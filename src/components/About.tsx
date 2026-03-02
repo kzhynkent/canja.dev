@@ -1,32 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { useScrambleText } from "./useScrambleText";
-
-function ScrambleTextOnScroll({ text, duration = 1500, className = "" }: { text: string, duration?: number, className?: string }) {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
-    const [shouldAnimate, setShouldAnimate] = useState(false);
-
-    // Only start scrambling when the element comes into view
-    useEffect(() => {
-        if (isInView) {
-            setShouldAnimate(true);
-        }
-    }, [isInView]);
-
-    // The hook returns the original text immediately if shouldAnimate is false
-    const scrambled = useScrambleText(text, duration);
-    const displayText = shouldAnimate ? scrambled : "";
-
-    return (
-        <span ref={ref} className={className}>
-            {displayText}
-        </span>
-    );
-}
+import { motion } from "framer-motion";
+import { ScrambleTextOnScroll } from "./ScrambleTextOnScroll";
 
 export default function About() {
     return (
@@ -43,7 +19,7 @@ export default function About() {
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ margin: "-100px" }}
                     transition={{ duration: 0.6 }}
                     className="flex items-center gap-4 mb-16"
                 >
@@ -77,7 +53,7 @@ export default function About() {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: "-100px" }}
+                        viewport={{ margin: "-100px" }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="relative group w-full max-w-md mx-auto aspect-[4/5] mt-8 md:mt-0"
                     >
