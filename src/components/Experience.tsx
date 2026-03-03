@@ -6,21 +6,21 @@ import { ScrambleTextOnScroll } from "./ScrambleTextOnScroll";
 export default function Experience() {
     const experiences = [
         {
-            id: "log-01",
-            role: "System Analyst",
-            company: "POLYCON (Thesis Project)",
-            duration: "2023 - 2024",
+            id: "log-03",
+            role: "Full-Stack Developer (Intern)",
+            company: "DTI NIR",
+            duration: "2026",
             description: [
-                "Architected system requirements and designed the core data flow for an AI-driven Learning Management System.",
-                "Collaborated with developers to ensure NLP and transcription models integrated flawlessly with the UI/UX architecture.",
-                "Conducted comprehensive system testing and mapped out user-experience workflows for both mentors and students."
+                "Contributed to the development and maintenance of scalable web applications during an intensive internship.",
+                "Gained hands-on experience with modern frontend frameworks and backend database integrations.",
+                "Assisted senior developers in debugging, optimizing code, and deploying features to production environments."
             ]
         },
         {
             id: "log-02",
             role: "Full-Stack Developer",
             company: "TACTIQ Project",
-            duration: "2023",
+            duration: "2025 - 2026",
             description: [
                 "Engineered a comprehensive legal operations platform from the ground up to digitize daily firm activities.",
                 "Developed systematic workflows for case documentation, automated reporting, and an integrated accounting module.",
@@ -28,14 +28,14 @@ export default function Experience() {
             ]
         },
         {
-            id: "log-03",
-            role: "Full-Stack Developer (Intern)",
-            company: "DTI NIR",
-            duration: "2022 - 2023",
+            id: "log-01",
+            role: "System Analyst",
+            company: "POLYCON (Thesis Project)",
+            duration: "2024 - 2025",
             description: [
-                "Contributed to the development and maintenance of scalable web applications during an intensive internship.",
-                "Gained hands-on experience with modern frontend frameworks and backend database integrations.",
-                "Assisted senior developers in debugging, optimizing code, and deploying features to production environments."
+                "Architected system requirements and designed the core data flow for an AI-driven Learning Management System.",
+                "Collaborated with developers to ensure NLP and transcription models integrated flawlessly with the UI/UX architecture.",
+                "Conducted comprehensive system testing and mapped out user-experience workflows for both mentors and students."
             ]
         }
     ];

@@ -59,13 +59,15 @@ export default function Skills() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ margin: "-100px" }}
                     transition={{ duration: 0.6 }}
-                    className="flex items-center gap-4 mb-16"
+                    className="flex flex-col sm:flex-row sm:items-center gap-4 mb-16"
                 >
-                    <span className="text-green-500 font-bold text-xl drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]">02.</span>
-                    <h2 className="text-3xl md:text-5xl font-black text-slate-100 uppercase tracking-tight">
-                        <ScrambleTextOnScroll text="System" duration={1000} /> <span className="text-green-500"><ScrambleTextOnScroll text="Capabilities" duration={1500} /></span>
-                    </h2>
-                    <div className="h-[2px] bg-gradient-to-r from-green-500/50 to-transparent flex-grow ml-4"></div>
+                    <div className="flex items-center gap-4">
+                        <span className="text-green-500 font-bold text-xl drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]">02.</span>
+                        <h2 className="text-3xl md:text-5xl font-black text-slate-100 uppercase tracking-tight">
+                            <ScrambleTextOnScroll text="System" duration={1000} /> <span className="text-green-500"><ScrambleTextOnScroll text="Capabilities" duration={1500} /></span>
+                        </h2>
+                    </div>
+                    <div className="h-[2px] bg-gradient-to-r from-green-500/50 to-transparent flex-grow w-full sm:w-auto ml-0 sm:ml-4 mt-2 sm:mt-0"></div>
                 </motion.div>
 
                 <div className="border border-green-500/30 bg-green-950/10 backdrop-blur-sm p-1 shadow-[inset_0_0_20px_rgba(34,197,94,0.05)]">
@@ -89,11 +91,11 @@ export default function Skills() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ margin: "-100px" }}
-                            className="grid md:grid-cols-2 gap-12"
+                            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12"
                         >
                             {skillCategories.map((category, idx) => (
                                 <motion.div key={idx} variants={itemVariants} className="space-y-4">
-                                    <h3 className="text-green-400 font-bold text-lg tracking-wider">
+                                    <h3 className="text-green-400 font-bold text-lg tracking-wider break-words break-all sm:break-normal">
                                         [<ScrambleTextOnScroll text={category.title} duration={800 + (idx * 200)} />]
                                     </h3>
                                     <div className="flex flex-wrap gap-3">

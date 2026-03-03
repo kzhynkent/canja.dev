@@ -40,12 +40,12 @@ export default function Navigation() {
                 <span className="inline-block w-3 h-5 bg-green-500 animate-[pulse_1s_infinite]"></span>
             </motion.div>
 
-            {/* Centered Navigation Links */}
+            {/* Centered Navigation Links, Hidden on Mobile */}
             <motion.ul
                 variants={containerVariant}
                 initial="hidden"
                 animate="show"
-                className="flex items-center gap-2 pointer-events-auto mx-auto"
+                className="hidden md:flex items-center gap-2 pointer-events-auto mx-auto"
             >
                 {links.map((link) => (
                     <motion.li key={link.name} variants={itemVariant}>

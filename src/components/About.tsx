@@ -30,7 +30,7 @@ export default function About() {
                     <div className="h-[2px] bg-gradient-to-r from-green-500/50 to-transparent flex-grow ml-4"></div>
                 </motion.div>
 
-                <div className="grid md:grid-cols-[3fr_2fr] gap-16 items-start">
+                <div className="flex flex-col-reverse md:grid md:grid-cols-[3fr_2fr] gap-12 md:gap-16 items-start">
                     {/* Text Content Area */}
                     <div className="relative p-8 border border-green-500/20 bg-green-950/10 backdrop-blur-sm shadow-[inset_0_0_20px_rgba(34,197,94,0.05)]">
                         {/* decorative corners */}
@@ -39,7 +39,7 @@ export default function About() {
                         <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-green-500"></div>
                         <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-green-500"></div>
 
-                        <div className="space-y-6 text-green-100/80 text-lg leading-relaxed">
+                        <div className="space-y-4 md:space-y-6 text-green-100/80 text-[0.95rem] md:text-lg font-light md:font-normal leading-relaxed">
                             <p>
                                 <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="I am a 22-year-old " duration={1500} /><span className="text-green-400 font-bold shadow-[0_4px_0_-2px_rgba(34,197,94,0.5)]"><ScrambleTextOnScroll text="Full-Stack Developer" duration={2000} /></span><ScrambleTextOnScroll text=" and a 4th-year Computer Science student based in the Philippines. I love building tools that truly help people and make everyday tasks easier. For me, the best part of coding is finding the perfect balance between smart, reliable system logic and a clean, seamless user experience." duration={3000} />
                             </p>
@@ -58,30 +58,24 @@ export default function About() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ margin: "-100px" }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="relative group w-full max-w-md mx-auto aspect-[4/5] mt-8 md:mt-0"
+                        className="relative group w-2/3 max-w-[250px] md:w-full md:max-w-md mx-auto aspect-square md:aspect-[4/5] mb-8 md:mb-0"
                     >
                         {/* Background wireframe accent */}
-                        <div className="absolute inset-0 border-2 border-green-500/30 translate-x-4 translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2">
-                            {/* animated targeting crosshairs in corners */}
-                            <div className="absolute -top-1 -left-1 w-2 h-2 bg-green-500/50"></div>
-                            <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-500/50"></div>
-                            <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-green-500/50"></div>
-                            <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-green-500/50"></div>
+                        <div className="absolute inset-0 border-2 border-green-500/30 rounded-full md:rounded-none translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4 -z-10 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2">
+                            {/* animated targeting crosshairs in corners (Hide on mobile circle) */}
+                            <div className="hidden md:block absolute -top-1 -left-1 w-2 h-2 bg-green-500/50"></div>
+                            <div className="hidden md:block absolute -top-1 -right-1 w-2 h-2 bg-green-500/50"></div>
+                            <div className="hidden md:block absolute -bottom-1 -left-1 w-2 h-2 bg-green-500/50"></div>
+                            <div className="hidden md:block absolute -bottom-1 -right-1 w-2 h-2 bg-green-500/50"></div>
                         </div>
 
                         {/* Image Container */}
-                        <div className="relative w-full h-full bg-slate-900 border border-green-500/50 overflow-hidden group-hover:border-green-400 transition-colors duration-500 shadow-[0_0_30px_rgba(34,197,94,0.1)]">
-                            {/* 
-                                Using next/image requires width/height or fill.
-                                Assuming the extension is .jpg. If it's .png, Next.js handles it, just ensure the file is named correctly.
-                            */}
-                            <div className="absolute inset-0 bg-green-500/10 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500"></div>
-
+                        <div className="relative w-full h-full bg-slate-900 border border-green-500/50 rounded-full md:rounded-none overflow-hidden group-hover:border-green-400 transition-colors duration-500 shadow-[0_0_30px_rgba(34,197,94,0.1)]">
                             <Image
                                 src="/bnw-profile2.JPG"
                                 alt="Profile Picture"
                                 fill
-                                className="object-cover filter grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+                                className="object-cover object-top transition-all duration-700"
                             />
 
                             {/* Scanning line effect */}
@@ -89,7 +83,7 @@ export default function About() {
                         </div>
 
                         {/* Decorative side HUD text */}
-                        <div className="absolute -right-20 top-12 rotate-90 origin-left text-xs text-green-500/50 tracking-widest uppercase font-bold">
+                        <div className="hidden md:block absolute -right-20 top-12 rotate-90 origin-left text-xs text-green-500/50 tracking-widest uppercase font-bold">
                             // IDENTITY_VERIFIED
                         </div>
                     </motion.div>

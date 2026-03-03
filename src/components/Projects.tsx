@@ -82,26 +82,80 @@ export default function Projects() {
                         </div>
                         <div className="p-4 flex flex-col gap-2 overflow-y-auto">
                             {projects.map((project) => (
-                                <button
-                                    key={project.id}
-                                    onClick={() => setActiveProject(project)}
-                                    className={`text-left p-3 flex flex-col gap-1 transition-all duration-300 border-l-2 ${activeProject.id === project.id
-                                        ? 'border-green-400 bg-green-500/10 text-green-400'
-                                        : 'border-transparent text-green-100/50 hover:text-green-300 hover:bg-green-500/5 hover:border-green-500/30'
-                                        }`}
-                                >
-                                    <div className="flex items-center gap-2">
-                                        <span className="opacity-50">{'>'}</span>
-                                        <span className="font-bold">{project.id}.{project.type}</span>
-                                    </div>
-                                    <span className="text-xs opacity-60 pl-4">{project.title}</span>
-                                </button>
+                                <div key={project.id} className="flex flex-col">
+                                    <button
+                                        onClick={() => setActiveProject(project)}
+                                        className={`text-left p-3 flex flex-col gap-1 transition-all duration-300 border-l-2 ${activeProject.id === project.id
+                                            ? 'border-green-400 bg-green-500/10 text-green-400'
+                                            : 'border-transparent text-green-100/50 hover:text-green-300 hover:bg-green-500/5 hover:border-green-500/30'
+                                            }`}
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <span className="opacity-50">{activeProject.id === project.id ? '▼' : '>'}</span>
+                                            <span className="font-bold">{project.id}.{project.type}</span>
+                                        </div>
+                                        <span className="text-xs opacity-60 pl-6 lg:pl-4">{project.title}</span>
+                                    </button>
+
+                                    {/* Mobile Accordion Panel */}
+                                    <AnimatePresence>
+                                        {activeProject.id === project.id && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="lg:hidden overflow-hidden bg-black/50 border-x border-b border-green-500/20"
+                                            >
+                                                <div className="p-4 flex flex-col gap-4">
+                                                    <div className="flex justify-between items-start">
+                                                        <h3 className="text-lg font-black text-green-400 uppercase tracking-wider">{project.title}</h3>
+                                                        {project.status === "undeployed" && (
+                                                            <span className="px-1 py-0.5 bg-yellow-500/20 text-yellow-500 text-[10px] font-bold border border-yellow-500/50 uppercase ml-2 text-center whitespace-nowrap">Internal</span>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Mobile Action Links */}
+                                                    <div className="flex gap-4">
+                                                        {project.github !== "#" && (
+                                                            <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-green-500 hover:text-green-300 border border-green-500/30 bg-green-900/20 px-3 py-1.5 transition-colors">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></svg>
+                                                                Source
+                                                            </a>
+                                                        )}
+                                                        {project.link !== "#" && (
+                                                            <a href={project.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-green-500 hover:text-green-300 border border-green-500/30 bg-green-900/20 px-3 py-1.5 transition-colors">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6" /><path d="M10 14 21 3" /><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /></svg>
+                                                                Launch
+                                                            </a>
+                                                        )}
+                                                    </div>
+
+                                                    <p className="text-sm text-green-100/70 leading-relaxed border-l border-green-500/30 pl-3">
+                                                        {project.description}
+                                                    </p>
+
+                                                    <div>
+                                                        <div className="text-[10px] text-green-500/60 uppercase tracking-widest mb-2">sys_dependencies:</div>
+                                                        <div className="flex flex-wrap gap-1.5">
+                                                            {project.techs.map((tech, i) => (
+                                                                <span key={i} className="px-1.5 py-0.5 bg-green-950/40 border border-green-500/20 text-green-400 text-xs text-center inline-block">
+                                                                    {tech}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* RIGHT PANEL: Project Data HUD */}
-                    <div className="w-full lg:w-2/3 border border-green-500/30 bg-black/80 relative flex flex-col h-full min-h-[400px]">
+                    {/* RIGHT PANEL: Project Data HUD (DESKTOP ONLY) */}
+                    <div className="hidden lg:flex lg:w-2/3 border border-green-500/30 bg-black/80 relative flex-col h-full min-h-[400px]">
                         {/* Decorative Corners */}
                         <div className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-green-500"></div>
                         <div className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-green-500"></div>

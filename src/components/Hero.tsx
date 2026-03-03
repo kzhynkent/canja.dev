@@ -110,10 +110,10 @@ export default function Hero() {
                         {subHeading}_
                     </div>
 
-                    <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-green-300 to-green-700 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] leading-[0.9]">
+                    <h1 className="text-4xl sm:text-5xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-green-300 to-green-700 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] leading-[1.1] md:leading-[0.9]">
                         {title1}
                         <br />
-                        <span className="text-green-500 opacity-90">
+                        <span className="text-green-500 opacity-90 block mt-2 md:mt-0">
                             {title2}
                         </span>
                     </h1>
