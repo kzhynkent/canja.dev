@@ -95,7 +95,7 @@ export default function Skills() {
                         >
                             {skillCategories.map((category, idx) => (
                                 <motion.div key={idx} variants={itemVariants} className="space-y-4">
-                                    <h3 className="text-green-400 font-bold text-lg tracking-wider break-words break-all sm:break-normal">
+                                    <h3 className="text-green-400 font-bold text-sm md:text-lg tracking-normal md:tracking-wider whitespace-nowrap overflow-hidden text-ellipsis">
                                         [<ScrambleTextOnScroll text={category.title} duration={800 + (idx * 200)} />]
                                     </h3>
                                     <div className="flex flex-wrap gap-3">

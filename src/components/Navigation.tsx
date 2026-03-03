@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Navigation() {
@@ -10,6 +11,22 @@ export default function Navigation() {
         { name: "Experience", href: "#experience" },
         { name: "Contact", href: "#contact" },
     ];
+
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const aboutSection = document.getElementById("about");
+            const threshold = aboutSection ? aboutSection.offsetTop - 80 : 100;
+            setIsScrolled(window.scrollY >= threshold);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        // Initial check in case they refresh half-way down
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const containerVariant = {
         hidden: { opacity: 0 },
@@ -28,7 +45,8 @@ export default function Navigation() {
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center pointer-events-none font-mono bg-black/40 backdrop-blur-md">
+        <nav className={`fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center pointer-events-none font-mono transition-all duration-300 ${isScrolled ? "bg-black/80 backdrop-blur-md py-4" : "bg-transparent py-6"
+            }`}>
             {/* Logo placeholder - Left side */}
             <motion.div
                 initial={{ opacity: 0 }}
