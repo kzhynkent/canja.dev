@@ -5,7 +5,7 @@ import "./globals.css";
 const archivoBlack = Archivo_Black({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
+  title: "c.dev",
   description: "Personal Web Portfolio",
 };
 
