@@ -9,11 +9,33 @@ export default function Contact() {
     const form = useRef<HTMLFormElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+    const [botcheck, setBotcheck] = useState("");
 
     const sendEmail = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!form.current) return;
+
+        // Honeypot check for bots
+        if (botcheck) {
+            setSubmitStatus("success"); // silently disregard bot
+            setTimeout(() => setSubmitStatus("idle"), 5000);
+            form.current.reset();
+            setBotcheck("");
+            return;
+        }
+
+        // Basic frontend rate limiting (10 minutes)
+        const lastSubmit = localStorage.getItem('lastFormSubmit');
+        if (lastSubmit) {
+            const timeSinceLastSubmit = new Date().getTime() - parseInt(lastSubmit, 10);
+            const cooldownPeriod = 10 * 60 * 1000;
+
+            if (timeSinceLastSubmit < cooldownPeriod) {
+                alert("Transmission rate limited. Please hold for 10 minutes before sending another packet.");
+                return;
+            }
+        }
 
         setIsSubmitting(true);
         setSubmitStatus("idle");
@@ -23,10 +45,31 @@ export default function Contact() {
         const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
         const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+        // Sanitize inputs to prevent script injection
+        const sanitizeInput = (str: string) => {
+            return str.replace(/[<>"']/g, (char) => {
+                switch (char) {
+                    case '<': return '&lt;';
+                    case '>': return '&gt;';
+                    case '"': return '&quot;';
+                    case "'": return '&#39;';
+                    default: return char;
+                }
+            });
+        };
+
+        const formData = new FormData(form.current);
+        const templateParams = {
+            user_name: sanitizeInput(formData.get('user_name') as string || ''),
+            user_email: sanitizeInput(formData.get('user_email') as string || ''),
+            message: sanitizeInput(formData.get('message') as string || ''),
+        };
+
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
             .then((result) => {
                 console.log(result.text);
                 setSubmitStatus("success");
+                localStorage.setItem('lastFormSubmit', new Date().getTime().toString());
                 form.current?.reset();
             }, (error) => {
                 console.log(error.text);
@@ -89,6 +132,20 @@ export default function Contact() {
                             </div>
 
                             <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                                {/* Honeypot field to trap bots */}
+                                <div className="hidden" aria-hidden="true">
+                                    <label htmlFor="botcheck">Leave this field empty</label>
+                                    <input
+                                        type="text"
+                                        name="botcheck"
+                                        id="botcheck"
+                                        value={botcheck}
+                                        onChange={(e) => setBotcheck(e.target.value)}
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                    />
+                                </div>
+
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label htmlFor="user_name" className="text-green-500 text-xs uppercase tracking-widest pl-1">{'>'} IDENTIFIER</label>

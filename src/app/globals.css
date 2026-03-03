@@ -24,3 +24,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* CLI-Style Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+  /* match bg-slate-950 */
+  border-left: 1px solid #1e293b;
+  /* grid line effect */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  /* solid blocky thumb */
+  border-radius: 0px;
+  /* strict, no round corners for CLI feel */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+  /* a brief terminal green on hover */
+}
