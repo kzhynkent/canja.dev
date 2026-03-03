@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo_Black } from "next/font/google";
 import "./globals.css";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 const archivoBlack = Archivo_Black({ weight: "400", subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${archivoBlack.className} bg-slate-950 text-slate-50 antialiased`} suppressHydrationWarning>
         {children}
+        <BackgroundMusic />
       </body>
     </html>
   );

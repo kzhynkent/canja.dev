@@ -45,7 +45,22 @@ export default function Contact() {
         const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
         const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
-        // Sanitize inputs to prevent script injection
+        const formData = new FormData(form.current);
+        const nameInput = formData.get('user_name') as string || '';
+        const emailInput = formData.get('user_email') as string || '';
+        const messageInput = formData.get('message') as string || '';
+
+        // Validation: Block submission if any HTML/Script tags are detected
+        const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str);
+
+        if (containsHTML(nameInput) || containsHTML(emailInput) || containsHTML(messageInput)) {
+            alert("Transmission blocked: Invalid characters or script tags detected in the input payload.");
+            setIsSubmitting(false);
+            setSubmitStatus("error");
+            return;
+        }
+
+        // Additional Sanitization as a fallback before sending
         const sanitizeInput = (str: string) => {
             return str.replace(/[<>"']/g, (char) => {
                 switch (char) {
@@ -58,11 +73,10 @@ export default function Contact() {
             });
         };
 
-        const formData = new FormData(form.current);
         const templateParams = {
-            user_name: sanitizeInput(formData.get('user_name') as string || ''),
-            user_email: sanitizeInput(formData.get('user_email') as string || ''),
-            message: sanitizeInput(formData.get('message') as string || ''),
+            user_name: sanitizeInput(nameInput),
+            user_email: sanitizeInput(emailInput),
+            message: sanitizeInput(messageInput),
         };
 
         emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
@@ -212,7 +226,7 @@ export default function Contact() {
                                 )}
                                 {submitStatus === "error" && (
                                     <p className="text-red-500 text-center text-sm mt-4">
-                                        [TRANSMISSION FAILED] Connection error. Please try again.
+                                        [TRANSMISSION FAILED] Please try again.
                                     </p>
                                 )}
                             </form>
@@ -223,7 +237,10 @@ export default function Contact() {
                 {/* Footer Credits */}
                 <div className="mt-32 text-center text-green-500/40 text-xs tracking-widest flex flex-col items-center justify-center gap-2">
                     <p>Designed & Built by Kurt Zhynkent R. Canja</p>
-                    <div className="flex items-center justify-center gap-2">
+                    <p className="mt-2 text-[10px] text-green-500/30">
+                        BG Music: <a href="https://www.chosic.com/download-audio/58283/" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">Noise - Cyberpunk Sport Midtempo by Alex-Productions</a>
+                    </p>
+                    <div className="flex items-center justify-center gap-2 mt-4">
                         <span className="w-4 h-px bg-green-500/30"></span>
                         <p>SYSTEM.VER V1.0.0</p>
                         <span className="w-4 h-px bg-green-500/30"></span>
