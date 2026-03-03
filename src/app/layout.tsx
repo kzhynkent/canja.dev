@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${archivoBlack.className} bg-slate-950 text-slate-50 antialiased`}>
+      <body className={`${archivoBlack.className} bg-slate-950 text-slate-50 antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
