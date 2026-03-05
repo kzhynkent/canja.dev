@@ -19,15 +19,10 @@ export function useScrambleText(text: string, duration: number = 2000, trigger: 
 
     useEffect(() => {
         if (!trigger) {
-            let placeholder = "";
-            for (let i = 0; i < text.length; i++) {
-                placeholder += (text[i] === " " || text[i] === "\n") ? text[i] : "_";
-            }
-            setDisplayText(placeholder);
             return;
         }
 
-        let startTime = performance.now();
+        const startTime = performance.now();
         let frameId: number;
         let lastUpdateTime = 0;
 
@@ -37,7 +32,6 @@ export function useScrambleText(text: string, duration: number = 2000, trigger: 
 
             const scrambledLength = Math.floor(text.length * (1 - progress));
 
-            // Throttle updates slightly to reduce visual chaos (approx 30fps instead of 60fps)
             if (time - lastUpdateTime > 30) {
                 let newText = "";
                 for (let i = 0; i < text.length; i++) {

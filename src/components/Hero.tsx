@@ -154,7 +154,7 @@ export default function Hero() {
                     <div className="absolute top-10 right-0 p-5 border border-green-500/30 bg-black/60 backdrop-blur-md shadow-[0_0_30px_rgba(34,197,94,0.1)]">
                         <div className="absolute -top-1 -left-1 w-2 h-2 bg-green-500"></div>
                         <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-green-500"></div>
-                        <p className="text-xs text-green-500/70 mb-4 font-bold tracking-widest">// SYS_STATS</p>
+                        <p className="text-xs text-green-500/70 mb-4 font-bold tracking-widest">{"// SYS_STATS"}</p>
                         <ul className="text-sm text-green-400 space-y-3 font-medium">
                             <li className="flex justify-between gap-12 border-b border-green-900/50 pb-1"><span>EXPERIENCE:</span> <span className="text-white">5_YRS</span></li>
                             <li className="flex justify-between gap-12 border-b border-green-900/50 pb-1"><span>PROJECTS:</span> <span className="text-white">42_DEPLOYED</span></li>
@@ -163,7 +163,7 @@ export default function Hero() {
                     </div>
 
                     <div className="absolute bottom-10 left-10 p-4 border border-green-500/20 bg-green-950/20 backdrop-blur-md">
-                        <p className="text-xs text-green-500/60 mb-3 tracking-widest">// CURRENT_STACK</p>
+                        <p className="text-xs text-green-500/60 mb-3 tracking-widest">{"// CURRENT_STACK"}</p>
                         <div className="flex gap-3">
                             <span className="px-3 py-1 border border-green-500/40 bg-green-900/40 text-green-300 text-xs font-bold font-sans">TS</span>
                             <span className="px-3 py-1 border border-green-500/40 bg-green-900/40 text-green-300 text-xs font-bold font-sans">React</span>

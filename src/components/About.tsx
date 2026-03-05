@@ -41,7 +41,7 @@ export default function About() {
 
                         <div className="space-y-4 md:space-y-6 text-green-100/80 text-[0.95rem] md:text-lg font-light md:font-normal leading-relaxed">
                             <p>
-                                <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="I am a 22-year-old " duration={1500} /><span className="text-green-400 font-bold shadow-[0_4px_0_-2px_rgba(34,197,94,0.5)]"><ScrambleTextOnScroll text="Full-Stack Developer" duration={2000} /></span><ScrambleTextOnScroll text=" and a 4th-year Computer Science student based in the Philippines. I love building tools that truly help people and make everyday tasks easier. For me, the best part of coding is finding the perfect balance between smart, reliable system logic and a clean, seamless user experience." duration={3000} />
+                                <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="I am " duration={1200} /><span className="text-green-400 font-bold"><ScrambleTextOnScroll text="KURT ZHYNKENT R. CANJA" duration={1500} /></span><ScrambleTextOnScroll text=", a 22-year-old " duration={1800} /><span className="text-green-400 font-bold shadow-[0_4px_0_-2px_rgba(34,197,94,0.5)]"><ScrambleTextOnScroll text="Full-Stack Developer" duration={2000} /></span><ScrambleTextOnScroll text=" and a 4th-year Computer Science student based in the Philippines. I love building tools that truly help people and make everyday tasks easier. For me, the best part of coding is finding the perfect balance between smart, reliable system logic and a clean, seamless user experience." duration={3000} />
                             </p>
                             <p>
                                 <span className="text-green-500 font-bold">{'>'}</span> <ScrambleTextOnScroll text="Currently, I am focused on finishing my degree and growing my real-world tech skills through my internship at DTI Negros Occidental. Because I always want to keep learning, I am also earning certifications in Data Science on DataCamp (supported by a Data Engineering Pilipinas scholarship) and Digital Marketing on Coursera." duration={4000} />
@@ -84,7 +84,7 @@ export default function About() {
 
                         {/* Decorative side HUD text */}
                         <div className="hidden md:block absolute -right-20 top-12 rotate-90 origin-left text-xs text-green-500/50 tracking-widest uppercase font-bold">
-                            // IDENTITY_VERIFIED
+                            {/* IDENTITY_VERIFIED */}
                         </div>
                     </motion.div>
                 </div>
