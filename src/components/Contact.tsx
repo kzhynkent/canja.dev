@@ -32,7 +32,7 @@ export default function Contact() {
             const cooldownPeriod = 10 * 60 * 1000;
 
             if (timeSinceLastSubmit < cooldownPeriod) {
-                alert("Transmission rate limited. Please hold for 10 minutes before sending another packet.");
+                alert("Transmission rate limited.");
                 return;
             }
         }
